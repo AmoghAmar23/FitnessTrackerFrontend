@@ -14,6 +14,7 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+
 export default function Login() {
   const navigate = useNavigate()
   const {setToken} = useContext(UserContext)
@@ -26,12 +27,12 @@ export default function Login() {
     });
     const response = await login(data.get('username'), data.get('password'))
     console.log(response)
-    if(response.data.token){
-    setToken(response.data.token)
+    if(response.token){
+    setToken(response.token)
     console.log(data.get("username"))
-    sessionStorage.setItem("token", response.data.token)
+    sessionStorage.setItem("token", response.token)
     sessionStorage.setItem("username", data.get("username"))
-    // navigate("/posts")
+    navigate("/activities")
     }
   };
 

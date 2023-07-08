@@ -10,8 +10,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { registerUser } from './server';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+  const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -21,6 +23,9 @@ export default function Signup() {
     });
     const response = registerUser(data.get('username'), data.get('password'))
     console.log(response)
+    if(response.token){
+      navigate("/login")
+    }
   };
 
   return (

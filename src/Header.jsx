@@ -6,9 +6,6 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -18,7 +15,6 @@ import { UserContext } from './App';
 
 
 const Header = (props) => {    
-  const {user,token} = React.useContext(UserContext)
     const drawerWidth = 240;
       const { window } = props;
       const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -30,18 +26,21 @@ const Header = (props) => {
       const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
           <Typography variant="h6" sx={{ my: 2 }}>
-            Stranger Things
+            Fitness Tracker
           </Typography>
           <Divider />
           <List>
           <Link href="/" underline="none" sx={{color:'#fff'}}>
             Home
           </Link>
-          <Link href="/posts" underline="none" sx={{color:'#fff'}}>
-            Posts
+          <Link href="/activities" underline="none" sx={{color:'#fff'}}>
+            Activities
           </Link>
-          <Link href="/profile" underline="none" sx={{color:'#fff'}}>
-            Profile
+          <Link href="/routines" underline="none" sx={{color:'#fff'}}>
+            Routines
+          </Link>
+          <Link href="/myroutines" underline="none" sx={{color:'#fff'}}>
+            My Routines
           </Link>
           {sessionStorage.getItem("token") ? 
               <Button onClick={()=>{sessionStorage.clear()}} sx={{color:'#fff', fontWeight:'400'}}>
@@ -73,17 +72,20 @@ const Header = (props) => {
                 component="div"
                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
               >
-                Stranger Things
+                Fitness Tracker
               </Typography>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                 <Link href="/" underline="none" sx={{color:'#fff',marginRight:'10px', fontWeight:'400'}}>
                   Home
                 </Link>
-                <Link href="/posts" underline="none" sx={{color:'#fff',marginRight:'10px', fontWeight:'400'}}>
-                  Posts
+                <Link href="/routines" underline="none" sx={{color:'#fff',marginRight:'10px', fontWeight:'400'}}>
+                  Routines
                 </Link>
-                <Link href="/profile" underline="none" sx={{color:'#fff',marginRight:'10px', fontWeight:'400'}}>
-                  Profile
+                <Link href="/activities" underline="none" sx={{color:'#fff',marginRight:'10px', fontWeight:'400'}}>
+                  Activities
+                </Link>
+                <Link href="/myroutines" underline="none" sx={{color:'#fff',marginRight:'10px', fontWeight:'400'}}>
+                  My Routines
                 </Link>
                 {sessionStorage.getItem("token") ? 
                 <Button onClick={()=>{sessionStorage.clear()}} sx={{color:'#fff', fontWeight:'400'}}>
